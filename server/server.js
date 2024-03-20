@@ -13,7 +13,7 @@ import cors from 'cors'
 
 mongoose.connect(process.env.MONGOURL)
 .then(()=>{
-    console.log('sedfghj');
+    console.log('MongoDB connected sucess');
 })
 .catch((err)=>{
     console.log(err);
