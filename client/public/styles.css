@@ -1,14 +1,19 @@
 * {
-    padding: 0;
+    padding: 10;
     margin: 0;
     box-sizing: border-box;
   }
   html {
     font-family: "Montserrat", sans-serif;
+    justify-content: center;
+    align-items: center;
+
   }
   body {
     background: #eee;
-    padding: 0 16px;
+    padding: 0px 16px;
+    justify-content: center;
+    align-items: center;
   }
   
   header {
@@ -24,6 +29,7 @@
     text-align: center;
     font-family: "McLaren", cursive;
     font-weight: 200;
+    font-size: 30px;
   }
   
   footer {
@@ -45,12 +51,15 @@
     height: 150px;
     width: 400px;
     margin: 16px;
-    align-items: center;
-    float: left;
-  }
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    float: left; /* If you still need floating, keep this */
+}
+
   .note h1 {
     
-    font-size: 1.5em;
+    font-size: 3.5em;
     margin-bottom: 6px;
   
   }

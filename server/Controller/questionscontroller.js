@@ -11,7 +11,6 @@ const isValidQuestion = (question) =>
     else
         return false;
 }
-
 export const addQuestion = async (req, res) => {
     try {
         const { cid } = req.params;
@@ -32,8 +31,22 @@ export const addQuestion = async (req, res) => {
             return res.status(400).json({ message: "Invalid question data", invalidQuestions });
         }
 
-        const newQuestions = await questionsmodel.create(questionsData);
-        category.questions.push(...newQuestions);
+        const newQuestions = [];
+        for (const questionData of questionsData) {
+            try {
+                const existingQuestion = await questionsmodel.findOne({ question_name: questionData.question_name });
+                if (existingQuestion) {
+                    category.questions.push(existingQuestion);
+                } else {
+                    const newQuestion = await questionsmodel.create(questionData);
+                    category.questions.push(newQuestion);
+                    newQuestions.push(newQuestion);
+                }
+            } catch (err) {
+                console.error("Error creating question:", err);
+            }
+        }
+
         await category.save()
 
         res.status(200).json({ newQuestions });
@@ -41,6 +54,9 @@ export const addQuestion = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+
+
+
 
 export const getAllQuestions = async(req,res) =>
 {

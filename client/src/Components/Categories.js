@@ -3,8 +3,8 @@ import Card from './Card'
 function Categories(props) {
     const {data,changeCategory}=props;
   return (
-    <div className = "app">
-      <div className="container">
+    <div >
+      <div >
         {data.map((element) => (
           <div key={element._id}>
             <Card

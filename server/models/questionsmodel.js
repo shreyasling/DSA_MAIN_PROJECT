@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const questionSchema = new mongoose.Schema({
     question_name:{
         type:String,
-        // unique:true,
+        unique:true,
         required:[true,'Question Name is Required']
     },
     question_difficulty:{
@@ -15,8 +15,8 @@ const questionSchema = new mongoose.Schema({
         type:String
     },
     question_link:{
-        type:[String]
-        // unique:true
+        type:[String],
+        unique:true
     },
 
     question_status:{
