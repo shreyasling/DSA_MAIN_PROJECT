@@ -1,0 +1,77 @@
+.range {
+    position: relative;
+    background-color: #333;
+    width: 1360px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    transform: skew(30deg);
+    font-family: 'Orbitron', monospace;
+  }
+  
+  .range:before {
+    --width: calc(var(--p) * 1%);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #F3E600; /* Adjust the progress bar fill color */
+    z-index: 0;
+    animation: load .5s forwards linear, glitch 2s infinite linear;
+  }
+  
+  .range:after {
+    counter-reset: progress var(--p);
+    content: counter(progress) '%';
+    color: #000; /* Adjust the color of the progress text */
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%) skewX(-30deg);
+    z-index: 1;
+  }
+  
+  .range__label {
+    transform: skew(-30deg) translateY(-100%);
+    line-height: 1.5;
+  }
+  
+  @keyframes load {
+    to {
+      width: var(--width);
+    }
+  }
+  .CustomProgressBar {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  
+  .relative {
+    position: relative;
+    margin-bottom: 8px; /* Add some margin bottom to provide space between the progress bar and the content below */
+  }
+  
+  
+  /* @keyframes glitch {
+    0%, 5% {
+      transform: translate(0, 0);
+    }
+    1% {
+      transform: translate(-5%, -10%);
+    }
+    2% {
+      transform: translate(10%, 30%);
+    }
+    3%{
+      transform: translate(-43%, 10%);
+    }
+    4% {
+      transform: translate(2%, -23%);
+    }
+  }
+   */
+
+   
